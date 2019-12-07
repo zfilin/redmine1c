@@ -22,6 +22,13 @@
    /etc/init.d/thin restart 
    ```
 ## Настройка
+В настройках плагина две опции: включение плагина и адрес опубликованного HTTP-сервиса:
+![Настройки плагина](https://raw.githubusercontent.com/zfilin/redmine1c/master/doc/fig1.png)
+
+В адресе используется токен, который нужно взять из узла обмена:
+![Где находится токен](https://raw.githubusercontent.com/zfilin/redmine1c/master/doc/fig2.png)
+
+В остальном публикация HTTP-сервиса выполняется обычным образом.
 
 ## Удаление плагина
 1. Удалите папку `plugins/redmine1c`
