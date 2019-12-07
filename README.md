@@ -4,7 +4,9 @@
 install
 
 bundle install --without development test --no-deployment
+
 bundle exec rake redmine:plugins NAME=redmine1c RAILS_ENV=production
+
 /etc/init.d/thin restart 
 
 uninstall
