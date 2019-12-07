@@ -1,0 +1,20 @@
+<fieldset>
+	<p>
+		<label>Enabled</label>
+		<input type="checkbox"
+			id="settings_enabled" 
+			value="1" 
+			name="settings[enabled]"
+			<%= settings['enabled'] == '1' ? 'checked="checked"' : '' %> 
+		>
+	</p>
+	<p>
+		<label>Notification address</label>
+		<input type="text"
+			id="settings_notification_address" 
+			value="<%= settings['notification_address'] %>" 
+			name="settings[notification_address]"
+		><br>
+		<em>(ex.: https://your-site.com/your-base/hs/redmine/token/)</em>
+	</p>
+</fieldset>
