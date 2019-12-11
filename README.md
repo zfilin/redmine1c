@@ -41,6 +41,7 @@
 ```
 patch -p0 < plugins/redmine1c/scripts/mailer_hooks.diff
 ```
+Затем перезапустите веб-сервер.
 
 ## Удаление плагина
 1. Удалите папку `plugins/redmine1c`
