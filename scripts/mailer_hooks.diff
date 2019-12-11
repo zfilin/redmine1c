@@ -1,0 +1,18 @@
+--- app/models/mail_handler.rb	Sat Apr 07 14:30:06 2018
++++ app/models/mail_handler.rb	Wed Dec 11 16:08:14 2019
+@@ -219,6 +219,7 @@
+     # add To and Cc as watchers before saving so the watchers can reply to Redmine
+     add_watchers(issue)
+     issue.save!
++    Redmine::Hook.call_hook(:controller_issues_new_after_save, { :params => @params, :issue => issue })
+     add_attachments(issue)
+     logger.info "MailHandler: issue ##{issue.id} created by #{user}" if logger
+     issue
+@@ -252,6 +253,7 @@
+     add_watchers(issue)
+     add_attachments(issue)
+     issue.save!
++    Redmine::Hook.call_hook(:controller_issues_edit_after_save, { :params => @params, :issue => issue })
+     if logger
+       logger.info "MailHandler: issue ##{issue.id} updated by #{user}"
+     end
