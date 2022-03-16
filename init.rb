@@ -12,7 +12,7 @@ Redmine::Plugin.register :redmine1c do
   author     'Alexander Lapshyn'
   author_url 'https://zfilin.org.ua/'
 
-  version '1.0.0'
+  version '1.0.1'
 
   requires_redmine version_or_higher: '2.6.0'
   
