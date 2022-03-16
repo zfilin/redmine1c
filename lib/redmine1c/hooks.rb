@@ -16,15 +16,23 @@ module Redmine1C
 			
 			if uri.scheme == "http" then
 				Thread.new do
-					response = Net::HTTP.get_response(uri)
+					begin
+						response = Net::HTTP.get_response(uri)
+					rescue Exception => e
+						Rails.logger.warn("REDMINE1C UNABLE TO CONNECT #{uri}, ERROR #{e}")
+					end
 				end
 			else
 				Thread.new do
-					http = Net::HTTP.new(uri.host, uri.port)
-					http.use_ssl = true
-					http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-					request = Net::HTTP::Get.new(uri.request_uri)
-					response = http.request(request)
+					begin
+						http = Net::HTTP.new(uri.host, uri.port)
+						http.use_ssl = true
+						http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+						request = Net::HTTP::Get.new(uri.request_uri)
+						response = http.request(request)
+					rescue Exception => e
+						Rails.logger.warn("REDMINE1C UNABLE TO CONNECT #{uri}, ERROR #{e}")
+					end
 				end
 			end
 		end
